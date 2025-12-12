@@ -32,7 +32,7 @@ If you just want this up and running, follow these steps:
      - `email_template_id`, `teams_template_id`, `viva_template_id`
 
 3. **Import the AppBuilder page**  
-   - Open **AppBuilder**, create or open a page, and use **⋮ → Load Page State** to import the `pageState.json` file from this repo.
+   - Open **AppBuilder**, create or open a page, and use **⋮ → Load Page State** to import the `pageState` file from this repo.
 
 4. **Assign the workflow to the page**  
    - In the page **Settings → Workflows (array)**, add the **General – MSP Rewind** workflow.
@@ -152,3 +152,4 @@ To use this workflow with the provided AppBuilder page:
 4. Publish the page.
 
 This will apply the pre-built layout and components that expect the `General – MSP Rewind` workflow output and ensure the page is powered by this workflow.
+
