@@ -1,0 +1,323 @@
+/* ==UserStyle==
+@name        Rewst — Neutral Dark Gray
+@namespace   itsasap.com
+@version     3.3.0
+@description Strips ALL blue tint from Rewst's dark theme.
+@author      daniel.d@itsasap.com
+@homepageURL https://app.rewst.io
+==/UserStyle== */
+
+@-moz-document domain("app.rewst.io") {
+
+  /* =============================================================
+   * COLOR MAP — every blue-tinted Rewst color → neutral gray
+   *
+   *  rgb(2, 6, 23)       → #111111  body/wrapper
+   *  rgb(13, 17, 32)     → #111111  near-body dark
+   *  rgb(14, 18, 34)     → #111111  near-body dark
+   *  rgb(15, 23, 42)     → #161616  sidebar, table body
+   *  rgb(19, 21, 25)     → #181818  secondary deep
+   *  rgb(25, 26, 36)     → #1c1c1c  drawer paper, header, selects
+   *  rgb(28, 38, 56)     → #222222  near-panel dark
+   *  rgb(30, 41, 59)     → #222222  panels, inputs, table head
+   *  rgb(37, 40, 55)     → #282828  elevated secondary
+   *  rgb(48, 61, 80)     → #2e2e2e  near-search/nav
+   *  rgb(49, 48, 62)     → #333333  elevated tertiary
+   *  rgb(51, 65, 85)     → #2e2e2e  search bar, hover, nav
+   *  rgb(52, 53, 63)     → #363636  active surfaces
+   *  rgb(71, 85, 105)    → #3e3e3e  muted fills
+   *  rgb(100, 116, 139)  → #525252  hover highlights, borders
+   * ============================================================= */
+
+
+  /* 1. BODY — rgb(2, 6, 23) + rgb(13, 17, 32) + rgb(14, 18, 34) */
+  body, body::backdrop,
+  .css-2iteoi, .css-1xoq139, .css-1fu5875,
+  .css-wfy3id, .css-gq6ad4, .css-w2vks9 {
+    background-color: #111111 !important;
+  }
+
+
+  /* 2. SIDEBAR / DRAWER — rgb(25, 26, 36) */
+  .css-ejcqso .MuiDrawer-paper, .css-odguui .MuiDrawer-paper,
+  .css-1srmre0 .MuiDrawer-paper, .css-ubgcke .MuiDrawer-paper,
+  .css-1pwst3u, .css-1kq776k, .css-5650j1,
+  .css-1idrda5, .css-1yimdo1, .css-11qb1rh,
+  .css-dlkcng, .css-hs3fpy, .css-1bb4xbx,
+  .css-1nyy30y, .css-16c0xe6, .css-o6v197,
+  .css-wrllqe, .css-1gga3j, .css-4ud7de,
+  .css-lngx3o {
+    background-color: #1c1c1c !important;
+    background: #1c1c1c !important;
+  }
+
+  .MuiDrawer-root .MuiPaper-root, .MuiDrawer-paper,
+  .MuiDrawer-paperAnchorLeft, .MuiDrawer-paperAnchorDockedLeft,
+  div[class*="MuiDrawer-paper"] {
+    background-color: #1c1c1c !important;
+    background: #1c1c1c !important;
+  }
+
+  .MuiDrawer-root .Mui-selected,
+  .MuiDrawer-root .MuiListItemButton-root.Mui-selected {
+    background-color: #2e2e2e !important;
+  }
+
+  .MuiDrawer-root .MuiListItemButton-root:hover,
+  .MuiDrawer-root .MuiButtonBase-root:hover {
+    background-color: #282828 !important;
+  }
+
+  .css-p76a3m:not([multiple]) option, .css-p76a3m:not([multiple]) optgroup,
+  .css-1yb7ga9:not([multiple]) option, .css-1yb7ga9:not([multiple]) optgroup {
+    background-color: #1c1c1c !important;
+  }
+
+
+  /* 3. HEADER — rgb(25, 26, 36) */
+  .css-dtnxfe, .css-b6wszy, .css-1hsy6wh, .css-4lacg5 {
+    background-color: #1c1c1c !important;
+    background: #1c1c1c !important;
+  }
+
+  header, .MuiAppBar-root { background-color: #1c1c1c !important; background: #1c1c1c !important; }
+  .MuiPaper-elevation0 { background-color: #1c1c1c !important; }
+
+
+  /* 4. SECONDARY DEEP — rgb(19, 21, 25) */
+  .css-q49zcg, .css-y826mz,
+  .css-r3ce5j, .css-btzfrz, .css-yjztcg,
+  .css-glxvi0, .css-i24n8p { background-color: #181818 !important; }
+
+
+  /* 5. TABLE BODY — rgb(15, 23, 42) */
+  .css-1amggnj, .css-1pgobmv, .css-1pgobmv tbody tr,
+  .css-1h73t9j, .css-ph133x,
+  .css-a8bjiy, .css-x497b3 {
+    background-color: #161616 !important;
+    background: #161616 !important;
+  }
+  .MuiTableBody-root .MuiTableRow-root, tbody tr { background-color: #161616 !important; }
+
+
+  /* 6. PANELS / TABLE HEAD — rgb(30, 41, 59) */
+  .css-2iteoi > .MuiPaper-root,
+  .css-2iteoi .MuiPaper-root:not(.MuiCard-root):not(.MuiAlert-root):not(.MuiDialog-paper):not(.MuiPopover-paper):not(.MuiAccordion-root):not(.MuiMenu-paper),
+  .css-1mcvph8, .css-1ca1sjn,
+  .css-1r642i9 .MuiOutlinedInput-root,
+  .css-z3zxrz .MuiOutlinedInput-root,
+  .css-4ysi74, .css-36e5q2,
+  .css-dpuog6 .MuiInputBase-root,
+  .css-1xxhhf8 .MuiInputBase-root,
+  .css-1se768c, .css-1vt3msm,
+  .css-cw8cub, .css-1cmlg1w, .css-9gf5wc,
+  .css-1pgobmv thead,
+  .css-munaqc, .css-pfij0, .css-ewc3p3 {
+    background-color: #222222 !important;
+    background: #222222 !important;
+  }
+
+  .MuiDialog-paper { background-color: #222222 !important; }
+  .MuiMenu-paper, .MuiPopover-paper, .MuiAutocomplete-paper { background-color: #222222 !important; }
+  .MuiDataGrid-root, .MuiDataGrid-main, .MuiDataGrid-footerContainer { background-color: #1e1e1e !important; }
+  .MuiDataGrid-columnHeaders { background-color: #282828 !important; }
+  .MuiPaper-root { background-color: #1e1e1e !important; }
+  .MuiPaper-elevation1 { background-color: #1e1e1e !important; }
+  .MuiTable-root, .MuiTableContainer-root { background-color: #1e1e1e !important; }
+  .MuiTableHead-root, .MuiTableHead-root .MuiTableCell-root, thead, thead th { background-color: #222222 !important; }
+
+
+  /* ===========================================================
+   * 7. INPUTS — THE WRAPPER GETS THE COLOR, CHILDREN STAY TRANSPARENT
+   *
+   *    MUI pattern: MuiOutlinedInput-root (has bg) > MuiOutlinedInput-input (transparent)
+   *    Rewst pattern: .css-17tp6n4 (search wrapper, has bg) > input (transparent)
+   *
+   *    We override the WRAPPER only. The inner input/textarea must
+   *    remain transparent so it inherits correctly.
+   * =========================================================== */
+
+  /* Input WRAPPERS get their background */
+  .MuiOutlinedInput-root,
+  table .MuiOutlinedInput-root,
+  .MuiInputBase-root,
+  .MuiFilledInput-root,
+  .MuiSelect-root {
+    background-color: #222222 !important;
+  }
+
+  /* Inner input/textarea elements MUST stay transparent inside MUI wrappers */
+  .MuiOutlinedInput-input,
+  .MuiInputBase-input,
+  .MuiFilledInput-input,
+  .MuiSelect-nativeInput,
+  .css-qtzqlh,
+  .css-7vjvpe {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  /* Search bar wrapper */
+  .css-17tp6n4 {
+    background: #2e2e2e !important;
+  }
+
+  .css-17tp6n4:hover {
+    background: #3e3e3e !important;
+  }
+
+  /* Standalone inputs NOT inside MUI wrappers (rare but possible) */
+  input:not(.MuiInputBase-input):not(.MuiOutlinedInput-input):not([type="search"]):not([type="checkbox"]),
+  textarea:not(.MuiInputBase-input):not(.MuiOutlinedInput-input) {
+    background-color: #222222 !important;
+  }
+
+  /* Search bar child inputs — MUST come after standalone input rule.
+     The standalone rule (specificity 0,4,1) would stomp transparent,
+     so we match it here to restore the wrapper's #2e2e2e showing through. */
+  .css-17tp6n4 input,
+  [class*="e1aztuz8"] input {
+    background-color: transparent !important;
+    background: transparent !important;
+  }
+
+
+  /* 8. SEARCH / HOVER / NAV — rgb(51, 65, 85) + rgb(48, 61, 80) */
+  .css-1amggnj:hover, .css-1pgobmv thead th:hover,
+  .css-1pgobmv tbody tr:hover,
+  .css-1kwflnw, .css-12xzo77, .css-1f1xkuw,
+  .css-hi7s9b,
+  .css-9xn9vd:hover:active, .css-1mhbfvt:hover:active,
+  .css-1wr0kn8, .css-pd5sxj,
+  .css-p63ji2, .css-mqo0v8, .css-v6e9kw {
+    background-color: #2e2e2e !important;
+    background: #2e2e2e !important;
+  }
+  .MuiTableBody-root .MuiTableRow-root:hover, tbody tr:hover { background-color: #2e2e2e !important; }
+  .MuiAccordion-root { background-color: #2e2e2e !important; }
+
+
+  /* 9. HOVER HIGHLIGHTS — rgb(100, 116, 139) */
+  .css-ui7e67 { background-color: #525252 !important; }
+  .css-1gx04nt:hover, .css-alm2fm:hover,
+  .css-9xn9vd:hover, .css-1mhbfvt:hover,
+  .css-1wr0kn8:hover, .css-pd5sxj:hover,
+  .css-1ojnrst:hover,
+  .css-1kwflnw:hover, .css-12xzo77:hover, .css-1f1xkuw:hover {
+    background-color: #444444 !important;
+  }
+  .css-hs3fpy:hover { border-color: #525252 !important; }
+
+
+  /* 10. ELEVATED SURFACES */
+  .css-16yinne, .css-bxb9cg { background-color: #282828 !important; }  /* rgb(37,40,55) */
+  .css-1fq7jb8, .css-1244deo, .css-19cnjtd, .css-8ss0my { background-color: #333333 !important; }  /* rgb(49,48,62) */
+  .css-2v0mab { background-color: #363636 !important; }  /* rgb(52,53,63) */
+
+
+  /* 11. INLINE STYLE OVERRIDES */
+  *[style*="rgb(2, 6, 23)"], *[style*="rgb(2,6,23)"] { background-color: #111111 !important; background: #111111 !important; }
+  *[style*="rgb(13, 17, 32)"], *[style*="rgb(13,17,32)"] { background-color: #111111 !important; background: #111111 !important; }
+  *[style*="rgb(14, 18, 34)"], *[style*="rgb(14,18,34)"] { background-color: #111111 !important; background: #111111 !important; }
+  *[style*="rgb(15, 23, 42)"], *[style*="rgb(15,23,42)"], *[style*="#0f172a"] { background-color: #161616 !important; background: #161616 !important; }
+  *[style*="rgb(19, 21, 25)"], *[style*="rgb(19,21,25)"] { background-color: #181818 !important; background: #181818 !important; }
+  *[style*="rgb(25, 26, 36)"], *[style*="rgb(25,26,36)"] { background-color: #1c1c1c !important; background: #1c1c1c !important; }
+  *[style*="rgb(28, 38, 56)"], *[style*="rgb(28,38,56)"] { background-color: #222222 !important; background: #222222 !important; }
+  *[style*="rgb(30, 41, 59)"], *[style*="rgb(30,41,59)"], *[style*="#1e293b"] { background-color: #222222 !important; background: #222222 !important; }
+  *[style*="rgb(48, 61, 80)"], *[style*="rgb(48,61,80)"] { background-color: #2e2e2e !important; background: #2e2e2e !important; }
+  *[style*="rgb(51, 65, 85)"], *[style*="rgb(51,65,85)"], *[style*="#334155"] { background-color: #2e2e2e !important; background: #2e2e2e !important; }
+  *[style*="rgb(71, 85, 105)"], *[style*="rgb(71,85,105)"], *[style*="#475569"] { background-color: #3e3e3e !important; background: #3e3e3e !important; }
+  *[style*="rgb(100, 116, 139)"], *[style*="rgb(100,116,139)"], *[style*="#64748b"] { background-color: #525252 !important; }
+
+
+  /* 12. BORDERS */
+  .css-s1kljn, .css-bjvh8h, .css-tt3pq9,
+  .css-udz98h, .css-hqqdry, .css-yd03se,
+  .css-5n05gh, .css-1uzvdtq { border-left-color: #444444 !important; }
+
+  .css-1ljwi1q, .css-1pwst3u,
+  .css-hdl0hp, .css-hktfqq, .css-1fnukky { border-right-color: #444444 !important; }
+
+  .css-u20oge, .css-tem2a8, .css-iw6qos,
+  .css-1fmhkl0, .css-1vik03w, .css-p3q5lm,
+  .css-10pxb8h, .css-1amggnj, .css-1vak5s3,
+  .css-d202s8, .css-1h73t9j, .css-ph133x,
+  .css-1l993ce, .css-9ib9mf, .css-qrw8xj,
+  .css-alm2fm, .css-1ojnrst, .css-1dfz4rt { border-color: #444444 !important; }
+
+  .css-1pgobmv thead th, .css-1pgobmv tbody tr td { border-bottom-color: #333333 !important; }
+  .css-1imb8r4 { border-top-color: #444444 !important; }
+  .css-uw7lwf .MuiDialogTitle-root, .css-5o7rrn .MuiDialogTitle-root, .css-ckmdy3 { border-bottom-color: #444444 !important; }
+
+  .MuiOutlinedInput-notchedOutline { border-color: #333333 !important; }
+  .MuiTableCell-root, td, th { border-bottom-color: #2a2a2a !important; }
+  .MuiDivider-root, hr { border-color: #2a2a2a !important; background-color: #2a2a2a !important; }
+
+  *[style*="border-color: rgb(51, 65, 85)"], *[style*="border-color: rgb(51,65,85)"], *[style*="border-color: #334155"] { border-color: #333333 !important; }
+  *[style*="border-color: rgb(71, 85, 105)"], *[style*="border-color: #475569"] { border-color: #3e3e3e !important; }
+  *[style*="border-color: rgb(30, 41, 59)"], *[style*="border-color: rgb(30,41,59)"] { border-color: #333333 !important; }
+  *[style*="border-color: rgb(100, 116, 139)"], *[style*="border-color: rgb(100,116,139)"] { border-color: #444444 !important; }
+
+  .css-1cw9bor::-webkit-input-placeholder, .css-1cw9bor::placeholder,
+  .css-ph133x::-webkit-input-placeholder, .css-ph133x::placeholder { color: #666666 !important; }
+
+
+  /* 13. ACTIVE STATE FILL/TEXT */
+  .css-tem2a8:active svg, .css-iw6qos:active svg,
+  .css-1vik03w:active svg, .css-p3q5lm:active svg,
+  .css-j5yf4z:active svg, .css-1tu0efe:active svg,
+  .css-1vak5s3:active svg, .css-d202s8:active svg,
+  .css-eeot7c:active svg, .css-uj2t0r:active svg,
+  .css-1kwflnw:active svg, .css-12xzo77:active svg,
+  .css-1f1xkuw:active svg, .css-9ib9mf:active svg,
+  .css-qrw8xj:active svg, .css-1gx04nt:active svg,
+  .css-alm2fm:active svg, .css-1ojnrst:active svg { fill: #222222 !important; }
+
+  .css-1fmhkl0:active, .css-1ew1lt4, .css-1ew1lt4:active,
+  .css-1vik03w:active, .css-p3q5lm:active,
+  .css-10pxb8h:active, .css-1vak5s3:active,
+  .css-d202s8:active,
+  .css-1kwflnw:active .eiowfsn1, .css-12xzo77:active .eiowfsn1,
+  .css-1f1xkuw:active .eiowfsn1,
+  .css-9ib9mf:active, .css-qrw8xj:active { color: #222222 !important; }
+
+  .css-1kwflnw:active .eiowfsn0,
+  .css-12xzo77:active .eiowfsn0,
+  .css-1f1xkuw:active .eiowfsn0 { color: #161616 !important; }
+
+
+  /* 14. MISC MUI */
+  .MuiButton-outlined { border-color: #444444 !important; }
+  .MuiButton-outlined:hover { background-color: #2e2e2e !important; }
+  .MuiChip-outlined { border-color: #444444 !important; }
+  .MuiMenu-list { background-color: #222222 !important; }
+  .MuiMenuItem-root:hover { background-color: #2e2e2e !important; }
+  .MuiTooltip-tooltip { background-color: #2e2e2e !important; }
+  .MuiTabs-root { background-color: #1e1e1e !important; }
+  .MuiTab-root.Mui-selected { background-color: #282828 !important; }
+  .MuiModal-root .MuiPaper-root { background-color: #222222 !important; }
+
+
+  /* 15. WORKFLOW EDITOR (React Flow) */
+  .react-flow {
+    --xy-background-color: #141414 !important;
+    --xy-node-background-color: #1e1e1e !important;
+    --xy-node-border: 1px solid #333333 !important;
+    --xy-minimap-background-color: #111111 !important;
+    --xy-minimap-mask-background-color: rgba(58, 58, 58, 0.6) !important;
+    --xy-minimap-node-background-color: #3e3e3e !important;
+    --xy-controls-button-background-color: #2e2e2e !important;
+    --xy-controls-button-background-color-hover: #3e3e3e !important;
+    --xy-controls-button-border-color: #444444 !important;
+    --xy-edge-label-background-color: #1e1e1e !important;
+  }
+  .react-flow__node { background-color: #1e1e1e !important; }
+
+
+  /* 16. TOASTS / SCROLLBAR */
+  .Toastify__toast-theme--dark { background: #222222 !important; }
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: #141414; }
+  ::-webkit-scrollbar-thumb { background: #3e3e3e; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #525252; }
+}
