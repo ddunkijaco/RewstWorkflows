@@ -1,8 +1,8 @@
 /* ==UserStyle==
-@name        Rewst — Neutral Dark Gray
+@name        Rewst - Neutral Dark Gray
 @namespace   itsasap.com
-@version     3.3.0
-@description Strips ALL blue tint from Rewst's dark theme.
+@version     4.0.0
+@description Strips all blue tint from Rewst dark theme. Two-layer: stable MUI selectors plus auto-generated volatile Emotion hashed selectors.
 @author      daniel.d@itsasap.com
 @homepageURL https://app.rewst.io
 ==/UserStyle== */
@@ -10,314 +10,698 @@
 @-moz-document domain("app.rewst.io") {
 
   /* =============================================================
-   * COLOR MAP — every blue-tinted Rewst color → neutral gray
+   * PALETTE — single source of truth
    *
-   *  rgb(2, 6, 23)       → #111111  body/wrapper
-   *  rgb(13, 17, 32)     → #111111  near-body dark
-   *  rgb(14, 18, 34)     → #111111  near-body dark
-   *  rgb(15, 23, 42)     → #161616  sidebar, table body
-   *  rgb(19, 21, 25)     → #181818  secondary deep
-   *  rgb(25, 26, 36)     → #1c1c1c  drawer paper, header, selects
-   *  rgb(28, 38, 56)     → #222222  near-panel dark
-   *  rgb(30, 41, 59)     → #222222  panels, inputs, table head
-   *  rgb(37, 40, 55)     → #282828  elevated secondary
-   *  rgb(48, 61, 80)     → #2e2e2e  near-search/nav
-   *  rgb(49, 48, 62)     → #333333  elevated tertiary
-   *  rgb(51, 65, 85)     → #2e2e2e  search bar, hover, nav
-   *  rgb(52, 53, 63)     → #363636  active surfaces
-   *  rgb(71, 85, 105)    → #3e3e3e  muted fills
-   *  rgb(100, 116, 139)  → #525252  hover highlights, borders
+   * Rewst's blue-tinted dark theme uses Tailwind Slate values.
+   * Every token below maps one of those blue-grays to a neutral.
+   *
+   *  Original (blue)            → Token             → Neutral
+   *  ─────────────────────────────────────────────────────────
+   *  rgb(2,6,23)                  --nd-base            #111111
+   *  rgb(13,17,32)/rgb(14,18,34)  (same as base)       #111111
+   *  rgb(15,23,42)  #0f172a       --nd-surface-1       #161616
+   *  rgb(19,21,25)                --nd-surface-2       #181818
+   *  rgb(25,26,36)                --nd-surface-3       #1c1c1c
+   *  —                            --nd-surface-4       #1e1e1e
+   *  rgb(28,38,56)/rgb(30,41,59)  --nd-panel           #222222
+   *  rgb(37,40,55)                --nd-elevated-1      #282828
+   *  rgb(48,61,80)/rgb(51,65,85)  --nd-elevated-2      #2e2e2e
+   *  rgb(49,48,62)                --nd-elevated-3      #333333
+   *  rgb(52,53,63)                --nd-elevated-4      #363636
+   *  rgb(71,85,105)               --nd-hover           #3e3e3e
+   *  —                            --nd-active          #444444
+   *  rgb(100,116,139)             --nd-muted           #525252
+   *  —                            --nd-border-subtle   #2a2a2a
+   *  —                            --nd-border          #333333
+   *  —                            --nd-border-strong   #444444
+   *  —                            --nd-placeholder     #666666
    * ============================================================= */
-
-
-  /* 1. BODY — rgb(2, 6, 23) + rgb(13, 17, 32) + rgb(14, 18, 34) */
-  body, body::backdrop,
-  .css-2iteoi, .css-1xoq139, .css-1fu5875,
-  .css-wfy3id, .css-gq6ad4, .css-w2vks9 {
-    background-color: #111111 !important;
+  :root {
+    --nd-base:           #111111;
+    --nd-surface-0:      #141414;
+    --nd-surface-1:      #161616;
+    --nd-surface-2:      #181818;
+    --nd-surface-3:      #1c1c1c;
+    --nd-surface-4:      #1e1e1e;
+    --nd-panel:          #222222;
+    --nd-elevated-1:     #282828;
+    --nd-elevated-2:     #2e2e2e;
+    --nd-elevated-3:     #333333;
+    --nd-elevated-4:     #363636;
+    --nd-hover:          #3e3e3e;
+    --nd-active:         #444444;
+    --nd-muted:          #525252;
+    --nd-border-subtle:  #2a2a2a;
+    --nd-border:         #333333;
+    --nd-border-strong:  #444444;
+    --nd-placeholder:    #666666;
   }
 
 
-  /* 2. SIDEBAR / DRAWER — rgb(25, 26, 36) */
-  .css-ejcqso .MuiDrawer-paper, .css-odguui .MuiDrawer-paper,
-  .css-1srmre0 .MuiDrawer-paper, .css-ubgcke .MuiDrawer-paper,
-  .css-1pwst3u, .css-1kq776k, .css-5650j1,
-  .css-1idrda5, .css-1yimdo1, .css-11qb1rh,
-  .css-dlkcng, .css-hs3fpy, .css-1bb4xbx,
-  .css-1nyy30y, .css-16c0xe6, .css-o6v197,
-  .css-wrllqe, .css-1gga3j, .css-4ud7de,
-  .css-lngx3o {
-    background-color: #1c1c1c !important;
-    background: #1c1c1c !important;
+  /* =============================================================
+   * 1. BODY / ROOT
+   * ============================================================= */
+  body,
+  body::backdrop {
+    background-color: var(--nd-base) !important;
   }
 
-  .MuiDrawer-root .MuiPaper-root, .MuiDrawer-paper,
-  .MuiDrawer-paperAnchorLeft, .MuiDrawer-paperAnchorDockedLeft,
+
+  /* =============================================================
+   * 2. SIDEBAR / DRAWER
+   * ============================================================= */
+  .MuiDrawer-root .MuiPaper-root,
+  .MuiDrawer-paper,
+  .MuiDrawer-paperAnchorLeft,
+  .MuiDrawer-paperAnchorDockedLeft,
   div[class*="MuiDrawer-paper"] {
-    background-color: #1c1c1c !important;
-    background: #1c1c1c !important;
+    background-color: var(--nd-surface-3) !important;
+    background: var(--nd-surface-3) !important;
   }
 
   .MuiDrawer-root .Mui-selected,
   .MuiDrawer-root .MuiListItemButton-root.Mui-selected {
-    background-color: #2e2e2e !important;
+    background-color: var(--nd-elevated-2) !important;
   }
 
   .MuiDrawer-root .MuiListItemButton-root:hover,
   .MuiDrawer-root .MuiButtonBase-root:hover {
-    background-color: #282828 !important;
+    background-color: var(--nd-elevated-1) !important;
   }
 
-  .css-p76a3m:not([multiple]) option, .css-p76a3m:not([multiple]) optgroup,
-  .css-1yb7ga9:not([multiple]) option, .css-1yb7ga9:not([multiple]) optgroup {
-    background-color: #1c1c1c !important;
+  /* Native <select> inside drawers/panels */
+  select:not([multiple]) option,
+  select:not([multiple]) optgroup {
+    background-color: var(--nd-surface-3) !important;
   }
 
 
-  /* 3. HEADER — rgb(25, 26, 36) */
-  .css-dtnxfe, .css-b6wszy, .css-1hsy6wh, .css-4lacg5 {
-    background-color: #1c1c1c !important;
-    background: #1c1c1c !important;
+  /* =============================================================
+   * 3. HEADER / APP BAR
+   * ============================================================= */
+  header,
+  .MuiAppBar-root,
+  .MuiAppBar-root .MuiToolbar-root {
+    background-color: var(--nd-surface-3) !important;
+    background: var(--nd-surface-3) !important;
   }
 
-  header, .MuiAppBar-root { background-color: #1c1c1c !important; background: #1c1c1c !important; }
-  .MuiPaper-elevation0 { background-color: #1c1c1c !important; }
 
-
-  /* 4. SECONDARY DEEP — rgb(19, 21, 25) */
-  .css-q49zcg, .css-y826mz,
-  .css-r3ce5j, .css-btzfrz, .css-yjztcg,
-  .css-glxvi0, .css-i24n8p { background-color: #181818 !important; }
-
-
-  /* 5. TABLE BODY — rgb(15, 23, 42) */
-  .css-1amggnj, .css-1pgobmv, .css-1pgobmv tbody tr,
-  .css-1h73t9j, .css-ph133x,
-  .css-a8bjiy, .css-x497b3 {
-    background-color: #161616 !important;
-    background: #161616 !important;
-  }
-  .MuiTableBody-root .MuiTableRow-root, tbody tr { background-color: #161616 !important; }
-
-
-  /* 6. PANELS / TABLE HEAD — rgb(30, 41, 59) */
-  .css-2iteoi > .MuiPaper-root,
-  .css-2iteoi .MuiPaper-root:not(.MuiCard-root):not(.MuiAlert-root):not(.MuiDialog-paper):not(.MuiPopover-paper):not(.MuiAccordion-root):not(.MuiMenu-paper),
-  .css-1mcvph8, .css-1ca1sjn,
-  .css-1r642i9 .MuiOutlinedInput-root,
-  .css-z3zxrz .MuiOutlinedInput-root,
-  .css-4ysi74, .css-36e5q2,
-  .css-dpuog6 .MuiInputBase-root,
-  .css-1xxhhf8 .MuiInputBase-root,
-  .css-1se768c, .css-1vt3msm,
-  .css-cw8cub, .css-1cmlg1w, .css-9gf5wc,
-  .css-1pgobmv thead,
-  .css-munaqc, .css-pfij0, .css-ewc3p3 {
-    background-color: #222222 !important;
-    background: #222222 !important;
-  }
-
-  .MuiDialog-paper { background-color: #222222 !important; }
-  .MuiMenu-paper, .MuiPopover-paper, .MuiAutocomplete-paper { background-color: #222222 !important; }
-  .MuiDataGrid-root, .MuiDataGrid-main, .MuiDataGrid-footerContainer { background-color: #1e1e1e !important; }
-  .MuiDataGrid-columnHeaders { background-color: #282828 !important; }
-  .MuiPaper-root { background-color: #1e1e1e !important; }
-  .MuiPaper-elevation1 { background-color: #1e1e1e !important; }
-  .MuiTable-root, .MuiTableContainer-root { background-color: #1e1e1e !important; }
-  .MuiTableHead-root, .MuiTableHead-root .MuiTableCell-root, thead, thead th { background-color: #222222 !important; }
-
-
-  /* ===========================================================
-   * 7. INPUTS — THE WRAPPER GETS THE COLOR, CHILDREN STAY TRANSPARENT
+  /* =============================================================
+   * 4. PAPER / SURFACES
    *
-   *    MUI pattern: MuiOutlinedInput-root (has bg) > MuiOutlinedInput-input (transparent)
-   *    Rewst pattern: .css-17tp6n4 (search wrapper, has bg) > input (transparent)
-   *
-   *    We override the WRAPPER only. The inner input/textarea must
-   *    remain transparent so it inherits correctly.
-   * =========================================================== */
+   *    MuiPaper-root is the base for almost every MUI surface.
+   *    Elevation variants get progressively lighter.
+   * ============================================================= */
+  body .MuiPaper-root {
+    background-color: var(--nd-surface-4) !important;
+  }
+  .MuiPaper-elevation0 {
+    background-color: var(--nd-surface-3) !important;
+  }
+  .MuiPaper-elevation1 {
+    background-color: var(--nd-surface-4) !important;
+  }
+  .MuiPaper-elevation2,
+  .MuiPaper-elevation3 {
+    background-color: var(--nd-panel) !important;
+  }
+  .MuiPaper-elevation4,
+  .MuiPaper-elevation8,
+  .MuiPaper-elevation16,
+  .MuiPaper-elevation24 {
+    background-color: var(--nd-elevated-1) !important;
+  }
 
-  /* Input WRAPPERS get their background */
-  .MuiOutlinedInput-root,
+
+  /* =============================================================
+   * 5. TABLES
+   * ============================================================= */
+  .MuiTable-root,
+  .MuiTableContainer-root {
+    background-color: var(--nd-surface-4) !important;
+  }
+
+  .MuiTableBody-root .MuiTableRow-root,
+  tbody tr {
+    background-color: var(--nd-surface-1) !important;
+  }
+
+  .MuiTableBody-root .MuiTableRow-root:hover,
+  tbody tr:hover {
+    background-color: var(--nd-elevated-2) !important;
+  }
+
+  .MuiTableHead-root,
+  .MuiTableHead-root .MuiTableCell-root,
+  thead,
+  thead th {
+    background-color: var(--nd-panel) !important;
+  }
+
+  .MuiTableCell-root,
+  td,
+  th {
+    border-bottom-color: var(--nd-border-subtle) !important;
+  }
+
+
+  /* =============================================================
+   * 6. DATA GRID
+   * ============================================================= */
+  .MuiDataGrid-root,
+  .MuiDataGrid-main,
+  .MuiDataGrid-footerContainer {
+    background-color: var(--nd-surface-4) !important;
+  }
+
+  .MuiDataGrid-columnHeaders,
+  .MuiDataGrid-columnHeader {
+    background-color: var(--nd-elevated-1) !important;
+  }
+
+  .MuiDataGrid-row:hover {
+    background-color: var(--nd-elevated-2) !important;
+  }
+
+
+  /* =============================================================
+   * 7. DIALOGS / MENUS / POPOVERS
+   * ============================================================= */
+  .MuiDialog-paper {
+    background-color: var(--nd-panel) !important;
+  }
+
+  .MuiDialogTitle-root {
+    border-bottom-color: var(--nd-border-strong) !important;
+  }
+
+  .MuiMenu-paper,
+  .MuiPopover-paper,
+  .MuiAutocomplete-paper {
+    background-color: var(--nd-panel) !important;
+  }
+
+  .MuiMenu-list {
+    background-color: var(--nd-panel) !important;
+  }
+
+  .MuiMenuItem-root:hover {
+    background-color: var(--nd-elevated-2) !important;
+  }
+
+  .MuiModal-root .MuiPaper-root {
+    background-color: var(--nd-panel) !important;
+  }
+
+
+  /* =============================================================
+   * 8. INPUTS
+   *
+   *    MUI pattern: wrapper (gets bg) > inner input (transparent).
+   *    We only color the WRAPPER. Inner elements inherit.
+   * ============================================================= */
+
+  /* Input wrappers — specificity boosted to beat Rewst's
+     "table .MuiOutlinedInput-root { ... !important }" (0,1,1).
+     Using body prefix gives us 0,1,1+ on every input context. */
+  body .MuiOutlinedInput-root,
+  body .MuiInputBase-root,
+  body .MuiFilledInput-root,
+  body .MuiSelect-root,
   table .MuiOutlinedInput-root,
-  .MuiInputBase-root,
-  .MuiFilledInput-root,
-  .MuiSelect-root {
-    background-color: #222222 !important;
+  table .MuiInputBase-root {
+    background-color: var(--nd-elevated-2) !important;
   }
 
-  /* Inner input/textarea elements MUST stay transparent inside MUI wrappers */
-  .MuiOutlinedInput-input,
-  .MuiInputBase-input,
-  .MuiFilledInput-input,
-  .MuiSelect-nativeInput,
-  .css-qtzqlh,
-  .css-7vjvpe {
+  /* Inner elements stay transparent — also boosted */
+  body .MuiOutlinedInput-input,
+  body .MuiInputBase-input,
+  body .MuiFilledInput-input,
+  body .MuiSelect-nativeInput {
     background: transparent !important;
     background-color: transparent !important;
   }
 
-  /* Search bar wrapper */
-  .css-17tp6n4 {
-    background: #2e2e2e !important;
+  /* Input border */
+  body .MuiOutlinedInput-notchedOutline {
+    border-color: var(--nd-border) !important;
   }
 
-  .css-17tp6n4:hover {
-    background: #3e3e3e !important;
-  }
-
-  /* Standalone inputs NOT inside MUI wrappers (rare but possible) */
+  /* Standalone inputs not inside MUI wrappers */
   input:not(.MuiInputBase-input):not(.MuiOutlinedInput-input):not([type="search"]):not([type="checkbox"]),
   textarea:not(.MuiInputBase-input):not(.MuiOutlinedInput-input) {
-    background-color: #222222 !important;
+    background-color: var(--nd-panel) !important;
   }
 
-  /* Search bar child inputs — MUST come after standalone input rule.
-     The standalone rule (specificity 0,4,1) would stomp transparent,
-     so we match it here to restore the wrapper's #2e2e2e showing through. */
-  .css-17tp6n4 input,
-  [class*="e1aztuz8"] input {
-    background-color: transparent !important;
+  /* Search-style inputs: wrapper gets elevated color, child stays transparent */
+  [role="search"],
+  [class*="search" i],
+  [class*="Search" i] {
+    background: var(--nd-elevated-2) !important;
+  }
+
+  [role="search"]:hover,
+  [class*="search" i]:hover,
+  [class*="Search" i]:hover {
+    background: var(--nd-hover) !important;
+  }
+
+  [role="search"] input,
+  [class*="search" i] input,
+  [class*="Search" i] input {
     background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  /* Placeholder text */
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--nd-placeholder) !important;
   }
 
 
-  /* 8. SEARCH / HOVER / NAV — rgb(51, 65, 85) + rgb(48, 61, 80) */
-  .css-1amggnj:hover, .css-1pgobmv thead th:hover,
-  .css-1pgobmv tbody tr:hover,
-  .css-1kwflnw, .css-12xzo77, .css-1f1xkuw,
-  .css-hi7s9b,
-  .css-9xn9vd:hover:active, .css-1mhbfvt:hover:active,
-  .css-1wr0kn8, .css-pd5sxj,
-  .css-p63ji2, .css-mqo0v8, .css-v6e9kw {
-    background-color: #2e2e2e !important;
-    background: #2e2e2e !important;
+  /* =============================================================
+   * 9. BUTTONS / CHIPS / TABS
+   * ============================================================= */
+  .MuiButton-outlined {
+    border-color: var(--nd-border-strong) !important;
   }
-  .MuiTableBody-root .MuiTableRow-root:hover, tbody tr:hover { background-color: #2e2e2e !important; }
-  .MuiAccordion-root { background-color: #2e2e2e !important; }
 
-
-  /* 9. HOVER HIGHLIGHTS — rgb(100, 116, 139) */
-  .css-ui7e67 { background-color: #525252 !important; }
-  .css-1gx04nt:hover, .css-alm2fm:hover,
-  .css-9xn9vd:hover, .css-1mhbfvt:hover,
-  .css-1wr0kn8:hover, .css-pd5sxj:hover,
-  .css-1ojnrst:hover,
-  .css-1kwflnw:hover, .css-12xzo77:hover, .css-1f1xkuw:hover {
-    background-color: #444444 !important;
+  .MuiButton-outlined:hover {
+    background-color: var(--nd-elevated-2) !important;
   }
-  .css-hs3fpy:hover { border-color: #525252 !important; }
+
+  .MuiChip-outlined {
+    border-color: var(--nd-border-strong) !important;
+  }
+
+  .MuiTabs-root {
+    background-color: var(--nd-surface-4) !important;
+  }
+
+  .MuiTab-root.Mui-selected {
+    background-color: var(--nd-elevated-1) !important;
+  }
+
+  /* Active-press: icon fills + text darken for contrast feedback */
+  .MuiIconButton-root:active svg,
+  .MuiButtonBase-root:active svg {
+    fill: var(--nd-panel) !important;
+  }
+
+  .MuiButtonBase-root:active {
+    color: var(--nd-panel) !important;
+  }
 
 
-  /* 10. ELEVATED SURFACES */
-  .css-16yinne, .css-bxb9cg { background-color: #282828 !important; }  /* rgb(37,40,55) */
-  .css-1fq7jb8, .css-1244deo, .css-19cnjtd, .css-8ss0my { background-color: #333333 !important; }  /* rgb(49,48,62) */
-  .css-2v0mab { background-color: #363636 !important; }  /* rgb(52,53,63) */
+  /* =============================================================
+   * 10. ACCORDION
+   * ============================================================= */
+  .MuiAccordion-root {
+    background-color: var(--nd-elevated-2) !important;
+  }
+
+  .MuiAccordionSummary-root:hover {
+    background-color: var(--nd-hover) !important;
+  }
 
 
-  /* 11. INLINE STYLE OVERRIDES */
-  *[style*="rgb(2, 6, 23)"], *[style*="rgb(2,6,23)"] { background-color: #111111 !important; background: #111111 !important; }
-  *[style*="rgb(13, 17, 32)"], *[style*="rgb(13,17,32)"] { background-color: #111111 !important; background: #111111 !important; }
-  *[style*="rgb(14, 18, 34)"], *[style*="rgb(14,18,34)"] { background-color: #111111 !important; background: #111111 !important; }
-  *[style*="rgb(15, 23, 42)"], *[style*="rgb(15,23,42)"], *[style*="#0f172a"] { background-color: #161616 !important; background: #161616 !important; }
-  *[style*="rgb(19, 21, 25)"], *[style*="rgb(19,21,25)"] { background-color: #181818 !important; background: #181818 !important; }
-  *[style*="rgb(25, 26, 36)"], *[style*="rgb(25,26,36)"] { background-color: #1c1c1c !important; background: #1c1c1c !important; }
-  *[style*="rgb(28, 38, 56)"], *[style*="rgb(28,38,56)"] { background-color: #222222 !important; background: #222222 !important; }
-  *[style*="rgb(30, 41, 59)"], *[style*="rgb(30,41,59)"], *[style*="#1e293b"] { background-color: #222222 !important; background: #222222 !important; }
-  *[style*="rgb(48, 61, 80)"], *[style*="rgb(48,61,80)"] { background-color: #2e2e2e !important; background: #2e2e2e !important; }
-  *[style*="rgb(51, 65, 85)"], *[style*="rgb(51,65,85)"], *[style*="#334155"] { background-color: #2e2e2e !important; background: #2e2e2e !important; }
-  *[style*="rgb(71, 85, 105)"], *[style*="rgb(71,85,105)"], *[style*="#475569"] { background-color: #3e3e3e !important; background: #3e3e3e !important; }
-  *[style*="rgb(100, 116, 139)"], *[style*="rgb(100,116,139)"], *[style*="#64748b"] { background-color: #525252 !important; }
+  /* =============================================================
+   * 11. TOOLTIPS / TOASTS
+   * ============================================================= */
+  .MuiTooltip-tooltip {
+    background-color: var(--nd-elevated-2) !important;
+  }
+
+  .Toastify__toast-theme--dark {
+    background: var(--nd-panel) !important;
+  }
 
 
-  /* 12. BORDERS */
-  .css-s1kljn, .css-bjvh8h, .css-tt3pq9,
-  .css-udz98h, .css-hqqdry, .css-yd03se,
-  .css-5n05gh, .css-1uzvdtq { border-left-color: #444444 !important; }
-
-  .css-1ljwi1q, .css-1pwst3u,
-  .css-hdl0hp, .css-hktfqq, .css-1fnukky { border-right-color: #444444 !important; }
-
-  .css-u20oge, .css-tem2a8, .css-iw6qos,
-  .css-1fmhkl0, .css-1vik03w, .css-p3q5lm,
-  .css-10pxb8h, .css-1amggnj, .css-1vak5s3,
-  .css-d202s8, .css-1h73t9j, .css-ph133x,
-  .css-1l993ce, .css-9ib9mf, .css-qrw8xj,
-  .css-alm2fm, .css-1ojnrst, .css-1dfz4rt { border-color: #444444 !important; }
-
-  .css-1pgobmv thead th, .css-1pgobmv tbody tr td { border-bottom-color: #333333 !important; }
-  .css-1imb8r4 { border-top-color: #444444 !important; }
-  .css-uw7lwf .MuiDialogTitle-root, .css-5o7rrn .MuiDialogTitle-root, .css-ckmdy3 { border-bottom-color: #444444 !important; }
-
-  .MuiOutlinedInput-notchedOutline { border-color: #333333 !important; }
-  .MuiTableCell-root, td, th { border-bottom-color: #2a2a2a !important; }
-  .MuiDivider-root, hr { border-color: #2a2a2a !important; background-color: #2a2a2a !important; }
-
-  *[style*="border-color: rgb(51, 65, 85)"], *[style*="border-color: rgb(51,65,85)"], *[style*="border-color: #334155"] { border-color: #333333 !important; }
-  *[style*="border-color: rgb(71, 85, 105)"], *[style*="border-color: #475569"] { border-color: #3e3e3e !important; }
-  *[style*="border-color: rgb(30, 41, 59)"], *[style*="border-color: rgb(30,41,59)"] { border-color: #333333 !important; }
-  *[style*="border-color: rgb(100, 116, 139)"], *[style*="border-color: rgb(100,116,139)"] { border-color: #444444 !important; }
-
-  .css-1cw9bor::-webkit-input-placeholder, .css-1cw9bor::placeholder,
-  .css-ph133x::-webkit-input-placeholder, .css-ph133x::placeholder { color: #666666 !important; }
+  /* =============================================================
+   * 12. DIVIDERS / BORDERS
+   * ============================================================= */
+  .MuiDivider-root,
+  hr {
+    border-color: var(--nd-border-subtle) !important;
+    background-color: var(--nd-border-subtle) !important;
+  }
 
 
-  /* 13. ACTIVE STATE FILL/TEXT */
-  .css-tem2a8:active svg, .css-iw6qos:active svg,
-  .css-1vik03w:active svg, .css-p3q5lm:active svg,
-  .css-j5yf4z:active svg, .css-1tu0efe:active svg,
-  .css-1vak5s3:active svg, .css-d202s8:active svg,
-  .css-eeot7c:active svg, .css-uj2t0r:active svg,
-  .css-1kwflnw:active svg, .css-12xzo77:active svg,
-  .css-1f1xkuw:active svg, .css-9ib9mf:active svg,
-  .css-qrw8xj:active svg, .css-1gx04nt:active svg,
-  .css-alm2fm:active svg, .css-1ojnrst:active svg { fill: #222222 !important; }
-
-  .css-1fmhkl0:active, .css-1ew1lt4, .css-1ew1lt4:active,
-  .css-1vik03w:active, .css-p3q5lm:active,
-  .css-10pxb8h:active, .css-1vak5s3:active,
-  .css-d202s8:active,
-  .css-1kwflnw:active .eiowfsn1, .css-12xzo77:active .eiowfsn1,
-  .css-1f1xkuw:active .eiowfsn1,
-  .css-9ib9mf:active, .css-qrw8xj:active { color: #222222 !important; }
-
-  .css-1kwflnw:active .eiowfsn0,
-  .css-12xzo77:active .eiowfsn0,
-  .css-1f1xkuw:active .eiowfsn0 { color: #161616 !important; }
-
-
-  /* 14. MISC MUI */
-  .MuiButton-outlined { border-color: #444444 !important; }
-  .MuiButton-outlined:hover { background-color: #2e2e2e !important; }
-  .MuiChip-outlined { border-color: #444444 !important; }
-  .MuiMenu-list { background-color: #222222 !important; }
-  .MuiMenuItem-root:hover { background-color: #2e2e2e !important; }
-  .MuiTooltip-tooltip { background-color: #2e2e2e !important; }
-  .MuiTabs-root { background-color: #1e1e1e !important; }
-  .MuiTab-root.Mui-selected { background-color: #282828 !important; }
-  .MuiModal-root .MuiPaper-root { background-color: #222222 !important; }
-
-
-  /* 15. WORKFLOW EDITOR (React Flow) */
+  /* =============================================================
+   * 13. WORKFLOW EDITOR (React Flow)
+   *
+   *    React Flow exposes CSS custom properties — the most stable
+   *    API possible. These survive any React Flow version bump.
+   * ============================================================= */
   .react-flow {
-    --xy-background-color: #141414 !important;
-    --xy-node-background-color: #1e1e1e !important;
-    --xy-node-border: 1px solid #333333 !important;
-    --xy-minimap-background-color: #111111 !important;
-    --xy-minimap-mask-background-color: rgba(58, 58, 58, 0.6) !important;
-    --xy-minimap-node-background-color: #3e3e3e !important;
-    --xy-controls-button-background-color: #2e2e2e !important;
-    --xy-controls-button-background-color-hover: #3e3e3e !important;
-    --xy-controls-button-border-color: #444444 !important;
-    --xy-edge-label-background-color: #1e1e1e !important;
+    --xy-background-color:                    var(--nd-surface-0) !important;
+    --xy-node-background-color:               var(--nd-surface-4) !important;
+    --xy-node-border:                         1px solid var(--nd-border) !important;
+    --xy-minimap-background-color:            var(--nd-base) !important;
+    --xy-minimap-mask-background-color:        rgba(58, 58, 58, 0.6) !important;
+    --xy-minimap-node-background-color:       var(--nd-hover) !important;
+    --xy-controls-button-background-color:     var(--nd-elevated-2) !important;
+    --xy-controls-button-background-color-hover: var(--nd-hover) !important;
+    --xy-controls-button-border-color:        var(--nd-border-strong) !important;
+    --xy-edge-label-background-color:         var(--nd-surface-4) !important;
+    --xy-background-pattern-color:            #555555 !important;
+    --xy-background-pattern-dots-color-default: #555555 !important;
   }
-  .react-flow__node { background-color: #1e1e1e !important; }
+
+  /* Konva canvas dot grid: handled by .css-2v0mab in volatile section.
+     Only background-color is set there (not background shorthand)
+     to preserve the inline radial-gradient that draws the dots. */
+
+  .react-flow__node {
+    background-color: var(--nd-surface-4) !important;
+  }
 
 
-  /* 16. TOASTS / SCROLLBAR */
-  .Toastify__toast-theme--dark { background: #222222 !important; }
-  ::-webkit-scrollbar { width: 8px; height: 8px; }
-  ::-webkit-scrollbar-track { background: #141414; }
-  ::-webkit-scrollbar-thumb { background: #3e3e3e; border-radius: 4px; }
-  ::-webkit-scrollbar-thumb:hover { background: #525252; }
+  /* =============================================================
+   * 14. SCROLLBAR
+   * ============================================================= */
+  ::-webkit-scrollbar       { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: var(--nd-surface-0); }
+  ::-webkit-scrollbar-thumb { background: var(--nd-hover); border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--nd-muted); }
+
+
+  /* =============================================================
+   * 15. TAILWIND GRAY OVERRIDES (RoboRewsty chat, etc.)
+   *
+   *    Tailwind's default "gray" palette is blue-tinted:
+   *      gray-900 #111827  gray-800 #1f2937  gray-700 #374151
+   *      gray-600 #4b5563
+   *    These appear in the RoboRewsty chat widget and any other
+   *    Tailwind-styled components. Class names are stable.
+   * ============================================================= */
+
+  /* Solid backgrounds — exact word match [class~=] for non-opacity variants */
+  [class~="bg-gray-900"]  { background-color: #111111 !important; }
+  [class~="bg-gray-800"]  { background-color: #1e1e1e !important; }
+  [class~="bg-gray-700"]  { background-color: #333333 !important; }
+
+  /* Opacity variants — Tailwind bakes alpha into rgb(), match each precisely.
+     Ordered most-specific-first so substring selectors don't clobber. */
+  [class*="bg-gray-900\/90"] { background-color: rgba(17, 17, 17, 0.9) !important; }
+  [class*="bg-gray-900\/60"] { background-color: rgba(17, 17, 17, 0.6) !important; }
+  [class*="bg-gray-800\/90"] { background-color: rgba(30, 30, 30, 0.9) !important; }
+  [class*="bg-gray-800\/30"] { background-color: rgba(30, 30, 30, 0.3) !important; }
+
+  /* Gradient stops */
+  [class*="from-gray-900"] { --tw-gradient-from: #111111 !important; }
+  [class*="from-gray-800"] { --tw-gradient-from: #1e1e1e !important; }
+  [class*="to-gray-900"]   { --tw-gradient-to: #111111 !important; }
+  [class*="to-gray-800"]   { --tw-gradient-to: #1e1e1e !important; }
+
+  /* Border utilities */
+  [class*="border-gray-700"] { border-color: rgba(51, 51, 51, 0.5) !important; }
+  [class*="border-gray-600"] { border-color: rgba(68, 68, 68, 1) !important; }
+
+  /* Hover variants */
+  [class*="hover\:bg-gray-700"]:hover { background-color: rgba(51, 51, 51, 0.5) !important; }
+  [class*="hover\:bg-gray-500"]:hover { background-color: rgba(82, 82, 82, 0.1) !important; }
+
+
+  /* =============================================================
+   * 16. INLINE STYLE OVERRIDES
+   *
+   *    THE MOST RESILIENT SELECTORS in this stylesheet.
+   *    These match elements where React sets colors via the style
+   *    attribute (e.g. style="background-color: rgb(30, 41, 59)").
+   *    Class names can change; inline color values don't.
+   *
+   *    Both spaced and unspaced rgb() forms are matched since
+   *    browsers/React may serialize either way.
+   * ============================================================= */
+
+  /* — Background overrides — */
+  *[style*="rgb(2, 6, 23)"],   *[style*="rgb(2,6,23)"]   { background-color: var(--nd-base) !important; background: var(--nd-base) !important; }
+  *[style*="rgb(13, 17, 32)"], *[style*="rgb(13,17,32)"]  { background-color: var(--nd-base) !important; background: var(--nd-base) !important; }
+  *[style*="rgb(14, 18, 34)"], *[style*="rgb(14,18,34)"]  { background-color: var(--nd-base) !important; background: var(--nd-base) !important; }
+
+  *[style*="rgb(15, 23, 42)"], *[style*="rgb(15,23,42)"],
+  *[style*="#0f172a"]                                       { background-color: var(--nd-surface-1) !important; background: var(--nd-surface-1) !important; }
+
+  *[style*="rgb(19, 21, 25)"], *[style*="rgb(19,21,25)"]  { background-color: var(--nd-surface-2) !important; background: var(--nd-surface-2) !important; }
+
+  *[style*="rgb(25, 26, 36)"], *[style*="rgb(25,26,36)"]  { background-color: var(--nd-surface-3) !important; background: var(--nd-surface-3) !important; }
+
+  *[style*="rgb(28, 38, 56)"], *[style*="rgb(28,38,56)"]  { background-color: var(--nd-panel) !important; background: var(--nd-panel) !important; }
+
+  *[style*="rgb(30, 41, 59)"], *[style*="rgb(30,41,59)"],
+  *[style*="#1e293b"]                                       { background-color: var(--nd-panel) !important; background: var(--nd-panel) !important; }
+
+  *[style*="rgb(48, 61, 80)"], *[style*="rgb(48,61,80)"]  { background-color: var(--nd-elevated-2) !important; background: var(--nd-elevated-2) !important; }
+
+  *[style*="rgb(51, 65, 85)"], *[style*="rgb(51,65,85)"],
+  *[style*="#334155"]                                       { background-color: var(--nd-elevated-2) !important; background: var(--nd-elevated-2) !important; }
+
+  *[style*="rgb(71, 85, 105)"], *[style*="rgb(71,85,105)"],
+  *[style*="#475569"]                                       { background-color: var(--nd-hover) !important; background: var(--nd-hover) !important; }
+
+  *[style*="rgb(100, 116, 139)"], *[style*="rgb(100,116,139)"],
+  *[style*="#64748b"]                                       { background-color: var(--nd-muted) !important; }
+
+  /* — Border overrides — */
+  *[style*="border-color: rgb(30, 41, 59)"],  *[style*="border-color: rgb(30,41,59)"]  { border-color: var(--nd-border) !important; }
+  *[style*="border-color: rgb(51, 65, 85)"],  *[style*="border-color: rgb(51,65,85)"],
+  *[style*="border-color: #334155"]                                                      { border-color: var(--nd-border) !important; }
+  *[style*="border-color: rgb(71, 85, 105)"], *[style*="border-color: #475569"]         { border-color: var(--nd-hover) !important; }
+  *[style*="border-color: rgb(100, 116, 139)"], *[style*="border-color: rgb(100,116,139)"] { border-color: var(--nd-border-strong) !important; }
+
+
+  /* =============================================================
+   * 17. VOLATILE SECTION -- auto-generated from MHTML snapshots
+   *
+   *    These .css-XXXXX selectors are Emotion hashed class names.
+   *    They WILL change when Rewst deploys a new build.
+   *
+   *    To regenerate:  python generate-volatile.py --write
+   *    Last generated: 2026-03-20
+   * =============================================================
+   */
+
+  /* --nd-base (#111111) -- backgrounds */
+  .css-2iteoi,
+  .css-1526atx,
+  .css-1fu5875,
+  .css-1h045zg,
+  .css-1xoq139,
+  .css-gq6ad4,
+  .css-w2vks9 {
+    background-color: var(--nd-base) !important;
+  }
+
+  /* --nd-elevated-1 (#282828) -- backgrounds */
+  .css-16yinne,
+  .css-bxb9cg,
+  .css-1qzebn2 {
+    background-color: var(--nd-elevated-1) !important;
+  }
+
+  /* --nd-elevated-2 (#2e2e2e) -- backgrounds */
+  .css-17tp6n4,
+  .css-12xzo77,
+  .css-1f1xkuw,
+  .css-1kwflnw,
+  .css-1wr0kn8,
+  .css-hi7s9b,
+  .css-pd5sxj,
+  .css-1tqxb36,
+  .css-9wbain,
+  .css-mqo0v8,
+  .css-p63ji2,
+  .css-v6e9kw,
+  .css-1ir794,
+  .css-1tcgbjq,
+  .css-nkgnx3 {
+    background-color: var(--nd-elevated-2) !important;
+  }
+
+  /* --nd-elevated-2 (#2e2e2e) -- hover states */
+  .css-1amggnj:hover,
+  .css-1pgobmv tbody tr:hover,
+  .css-1pgobmv thead th:hover {
+    background-color: var(--nd-elevated-2) !important;
+  }
+
+  /* --nd-elevated-2 (#2e2e2e) -- active states */
+  .css-1mhbfvt:hover:active,
+  .css-9xn9vd:hover:active {
+    background-color: var(--nd-elevated-2) !important;
+  }
+
+  /* --nd-elevated-3 (#333333) -- backgrounds */
+  .css-1244deo,
+  .css-1fq7jb8,
+  .css-19cnjtd,
+  .css-1bgaeg6,
+  .css-8ss0my,
+  .css-10qn5k7,
+  .css-19igg9m {
+    background-color: var(--nd-elevated-3) !important;
+  }
+
+  /* --nd-elevated-4 (#363636) -- backgrounds */
+  .css-2v0mab {
+    background-color: var(--nd-elevated-4) !important;
+  }
+
+  /* --nd-hover (#3e3e3e) -- backgrounds */
+  .css-262pmu .tooltip {
+    background-color: var(--nd-hover) !important;
+  }
+
+  /* --nd-muted (#525252) -- hover states */
+  .css-17tp6n4:hover,
+  .css-12xzo77:hover,
+  .css-1f1xkuw:hover,
+  .css-1gx04nt:hover,
+  .css-1kwflnw:hover,
+  .css-1mhbfvt:hover,
+  .css-1ojnrst:hover,
+  .css-1wr0kn8:hover,
+  .css-9xn9vd:hover,
+  .css-alm2fm:hover,
+  .css-pd5sxj:hover {
+    background-color: var(--nd-muted) !important;
+  }
+
+  /* --nd-muted (#525252) -- active states */
+  .css-ui7e67:active {
+    background-color: var(--nd-muted) !important;
+  }
+
+  /* --nd-muted (#525252) -- pseudo-elements */
+  .css-1i0w5l2::before,
+  .css-1ygyc9b::before,
+  .css-1mil866::before,
+  .css-d4zvsw::before {
+    background-color: var(--nd-muted) !important;
+  }
+
+  /* --nd-panel (#222222) -- backgrounds */
+  .css-1ca1sjn,
+  .css-1mcvph8,
+  .css-36e5q2,
+  .css-4ysi74,
+  .css-1cmlg1w,
+  .css-1pgobmv thead,
+  .css-1se768c,
+  .css-1vt3msm,
+  .css-cw8cub,
+  .css-1c1k2hs,
+  .css-1hmx2v6,
+  .css-1k9fzij,
+  .css-1yux3vh,
+  .css-9gf5wc,
+  .css-munaqc,
+  .css-pfij0,
+  .css-1ondaip,
+  .css-1qowtj,
+  .css-846fw8,
+  .css-ewc3p3,
+  .css-147ail5,
+  .css-1i0w5l2,
+  .css-1ygyc9b {
+    background-color: var(--nd-panel) !important;
+  }
+
+  /* --nd-surface-1 (#161616) -- backgrounds */
+  .css-1hsy6wh,
+  .css-b6wszy,
+  .css-dtnxfe,
+  .css-1amggnj,
+  .css-1h73t9j,
+  .css-1pgobmv,
+  .css-1pgobmv tbody tr,
+  .css-ph133x,
+  .css-186emmg,
+  .css-18uk45s,
+  .css-1ayms6p,
+  .css-a8bjiy,
+  .css-x497b3 {
+    background-color: var(--nd-surface-1) !important;
+  }
+
+  /* --nd-surface-2 (#181818) -- backgrounds */
+  .css-1kew23a,
+  .css-1magc77,
+  .css-1xvy80y,
+  .css-r3ce5j,
+  .css-13780c9,
+  .css-1oasf3n,
+  .css-btzfrz,
+  .css-yjztcg,
+  .css-glxvi0,
+  .css-i24n8p,
+  .css-q49zcg,
+  .css-y826mz {
+    background-color: var(--nd-surface-2) !important;
+  }
+
+  /* --nd-surface-3 (#1c1c1c) -- backgrounds */
+  .css-1kq776k,
+  .css-1pwst3u,
+  .css-1yb7ga9:not([multiple]) option, .css-1yb7ga9:not([multiple]) optgroup,
+  .css-4lacg5,
+  .css-5650j1,
+  .css-p76a3m:not([multiple]) option, .css-p76a3m:not([multiple]) optgroup,
+  .css-16c0xe6,
+  .css-1nyy30y,
+  .css-7pd963,
+  .css-lngx3o,
+  .css-11qb1rh,
+  .css-13llg1l,
+  .css-1bb4xbx,
+  .css-1gga3j,
+  .css-1idrda5,
+  .css-1tddvt1,
+  .css-1yimdo1,
+  .css-4ud7de,
+  .css-dlkcng,
+  .css-hs3fpy,
+  .css-o6v197,
+  .css-wrllqe,
+  .css-1mil866,
+  .css-1v5z2ra,
+  .css-es65h3,
+  .css-la6e77:not([multiple]) option, .css-la6e77:not([multiple]) optgroup {
+    background-color: var(--nd-surface-3) !important;
+  }
+
+  /* --- Volatile border selectors --- */
+
+  /* --nd-border (#333333) -- borders */
+  .css-bjvh8h,
+  .css-hqqdry,
+  .css-s1kljn,
+  .css-tt3pq9,
+  .css-3jiteu,
+  .css-kn2o9m,
+  .css-1sosvtv,
+  .css-ccfpd4 {
+    border-color: var(--nd-border) !important;
+  }
+
+  /* --nd-border-strong (#444444) -- borders */
+  .css-1dfz4rt,
+  .css-ckmdy3,
+  .css-65aq1k,
+  .css-1imb8r4 {
+    border-color: var(--nd-border-strong) !important;
+  }
+
+  /* --nd-hover (#3e3e3e) -- borders */
+  .css-1o8fs62,
+  .css-dtnxfe,
+  .css-262pmu .tooltip::after {
+    border-color: var(--nd-hover) !important;
+  }
+
+  /* --- End volatile section --- */
+
 }
