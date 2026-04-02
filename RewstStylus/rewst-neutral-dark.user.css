@@ -374,9 +374,11 @@
      Only background-color is set there (not background shorthand)
      to preserve the inline radial-gradient that draws the dots. */
 
-  .react-flow__node {
+  /* Only style rectangular task nodes, not SVG-shaped transition nodes */
+  .react-flow__node-workflowAction {
     background-color: var(--nd-surface-4) !important;
   }
+
 
 
   /* =============================================================
@@ -480,7 +482,7 @@
    *    They WILL change when Rewst deploys a new build.
    *
    *    To regenerate:  python generate-volatile.py --write
-   *    Last generated: 2026-03-20
+   *    Last generated: 2026-04-02
    * =============================================================
    */
 
@@ -491,7 +493,13 @@
   .css-1h045zg,
   .css-1xoq139,
   .css-gq6ad4,
-  .css-w2vks9 {
+  .css-w2vks9,
+  .css-14vvmtd .MuiDataGrid-footerContainer,
+  .css-1dackf2 .MuiDataGrid-footerContainer,
+  .css-1s11r5i,
+  .css-5fe37c .MuiInputBase-root,
+  .css-njqox3,
+  .css-wpg4u0 .MuiInputBase-root {
     background-color: var(--nd-base) !important;
   }
 
@@ -503,12 +511,12 @@
   }
 
   /* --nd-elevated-2 (#2e2e2e) -- backgrounds */
-  .css-17tp6n4,
   .css-12xzo77,
   .css-1f1xkuw,
   .css-1kwflnw,
   .css-1wr0kn8,
   .css-hi7s9b,
+  .css-17tp6n4,
   .css-pd5sxj,
   .css-1tqxb36,
   .css-9wbain,
@@ -517,20 +525,33 @@
   .css-v6e9kw,
   .css-1ir794,
   .css-1tcgbjq,
-  .css-nkgnx3 {
+  .css-1t9psaz,
+  .css-3ks5zw,
+  .css-17n0blf,
+  .css-18epln1,
+  .css-3j36cx .MuiOutlinedInput-root,
+  .css-5q0or .MuiAutocomplete-tag,
+  .css-hg1isv,
+  .css-nkgnx3,
+  .css-pte59k .MuiOutlinedInput-root,
+  .css-uf9tk4 .MuiAutocomplete-tag {
     background-color: var(--nd-elevated-2) !important;
   }
 
   /* --nd-elevated-2 (#2e2e2e) -- hover states */
   .css-1amggnj:hover,
   .css-1pgobmv tbody tr:hover,
-  .css-1pgobmv thead th:hover {
+  .css-1pgobmv thead th:hover,
+  .css-11f2l7e:hover,
+  .css-1fv4cc1:hover,
+  .css-4n7yw4:hover {
     background-color: var(--nd-elevated-2) !important;
   }
 
   /* --nd-elevated-2 (#2e2e2e) -- active states */
+  .css-9xn9vd:hover:active,
   .css-1mhbfvt:hover:active,
-  .css-9xn9vd:hover:active {
+  .css-1xub15i:hover:active {
     background-color: var(--nd-elevated-2) !important;
   }
 
@@ -555,18 +576,26 @@
     background-color: var(--nd-hover) !important;
   }
 
+  /* --nd-hover (#3e3e3e) -- hover states */
+  .css-17n0blf:hover {
+    background-color: var(--nd-hover) !important;
+  }
+
   /* --nd-muted (#525252) -- hover states */
-  .css-17tp6n4:hover,
   .css-12xzo77:hover,
   .css-1f1xkuw:hover,
   .css-1gx04nt:hover,
   .css-1kwflnw:hover,
-  .css-1mhbfvt:hover,
   .css-1ojnrst:hover,
   .css-1wr0kn8:hover,
   .css-9xn9vd:hover,
   .css-alm2fm:hover,
-  .css-pd5sxj:hover {
+  .css-17tp6n4:hover,
+  .css-1mhbfvt:hover,
+  .css-pd5sxj:hover,
+  .css-1t9psaz:hover,
+  .css-1xub15i:hover,
+  .css-3ks5zw:hover {
     background-color: var(--nd-muted) !important;
   }
 
@@ -586,16 +615,21 @@
   /* --nd-panel (#222222) -- backgrounds */
   .css-1ca1sjn,
   .css-1mcvph8,
+  .css-1r642i9 .MuiOutlinedInput-root,
+  .css-1xxhhf8 .MuiInputBase-root,
+  .css-2iteoi > .MuiPaper-root, .css-2iteoi .MuiPaper-root:not(.MuiCard-root):not(.MuiAlert-root):not(.MuiDialog-paper):not(.MuiPopover-paper):not(.MuiAccordion-root):not(.MuiMenu-paper),
   .css-36e5q2,
   .css-4ysi74,
+  .css-dpuog6 .MuiInputBase-root,
+  .css-z3zxrz .MuiOutlinedInput-root,
   .css-1cmlg1w,
   .css-1pgobmv thead,
   .css-1se768c,
   .css-1vt3msm,
   .css-cw8cub,
+  .css-1k9fzij,
   .css-1c1k2hs,
   .css-1hmx2v6,
-  .css-1k9fzij,
   .css-1yux3vh,
   .css-9gf5wc,
   .css-munaqc,
@@ -604,9 +638,29 @@
   .css-1qowtj,
   .css-846fw8,
   .css-ewc3p3,
+  .css-5o7rrn .MuiDialog-paper,
+  .css-uw7lwf .MuiDialog-paper,
   .css-147ail5,
   .css-1i0w5l2,
-  .css-1ygyc9b {
+  .css-1ygyc9b,
+  .css-rh63mq,
+  .css-14wi9we,
+  .css-1d4xdkw,
+  .css-1ftk5fo,
+  .css-1kzi4oh,
+  .css-1twljbm,
+  .css-1vf5uzt,
+  .css-1xnipa6,
+  .css-409lzj,
+  .css-4f886u,
+  .css-9gxncs,
+  .css-9kq5l5,
+  .css-ectict,
+  .css-m9tt08,
+  .css-r3kies,
+  .css-tqd5te,
+  .css-tswbfc,
+  .css-z9odut {
     background-color: var(--nd-panel) !important;
   }
 
@@ -614,6 +668,8 @@
   .css-1hsy6wh,
   .css-b6wszy,
   .css-dtnxfe,
+  .css-ejcqso .MuiDrawer-paper,
+  .css-odguui .MuiDrawer-paper,
   .css-1amggnj,
   .css-1h73t9j,
   .css-1pgobmv,
@@ -623,7 +679,24 @@
   .css-18uk45s,
   .css-1ayms6p,
   .css-a8bjiy,
-  .css-x497b3 {
+  .css-x497b3,
+  .css-1srmre0 .MuiDrawer-paper,
+  .css-ubgcke .MuiDrawer-paper,
+  .css-14vvmtd,
+  .css-14vvmtd .MuiDataGrid-row,
+  .css-15qjewh .MuiOutlinedInput-root,
+  .css-1aizebi .MuiOutlinedInput-root,
+  .css-1dackf2,
+  .css-1dackf2 .MuiDataGrid-row,
+  .css-1dtfm22,
+  .css-1jxd3rm,
+  .css-3j36cx .MuiOutlinedInput-root,
+  .css-5q0or .MuiOutlinedInput-root,
+  .css-5wuu7e .MuiOutlinedInput-root,
+  .css-8xjc7p,
+  .css-pte59k .MuiOutlinedInput-root,
+  .css-uf9tk4 .MuiOutlinedInput-root,
+  .css-xnd7ut {
     background-color: var(--nd-surface-1) !important;
   }
 
@@ -650,24 +723,26 @@
   .css-4lacg5,
   .css-5650j1,
   .css-p76a3m:not([multiple]) option, .css-p76a3m:not([multiple]) optgroup,
-  .css-16c0xe6,
   .css-1nyy30y,
+  .css-16c0xe6,
   .css-7pd963,
-  .css-lngx3o,
   .css-11qb1rh,
-  .css-13llg1l,
-  .css-1bb4xbx,
-  .css-1gga3j,
   .css-1idrda5,
-  .css-1tddvt1,
   .css-1yimdo1,
   .css-4ud7de,
   .css-dlkcng,
+  .css-lngx3o,
+  .css-1394ckv,
+  .css-13llg1l,
+  .css-1bb4xbx,
+  .css-1gga3j,
+  .css-1tddvt1,
+  .css-1v5z2ra,
+  .css-fpkqnh:not([multiple]) option, .css-fpkqnh:not([multiple]) optgroup,
   .css-hs3fpy,
   .css-o6v197,
   .css-wrllqe,
   .css-1mil866,
-  .css-1v5z2ra,
   .css-es65h3,
   .css-la6e77:not([multiple]) option, .css-la6e77:not([multiple]) optgroup {
     background-color: var(--nd-surface-3) !important;
@@ -677,11 +752,12 @@
 
   /* --nd-border (#333333) -- borders */
   .css-bjvh8h,
-  .css-hqqdry,
   .css-s1kljn,
   .css-tt3pq9,
+  .css-hqqdry,
   .css-3jiteu,
   .css-kn2o9m,
+  .css-1pbluax,
   .css-1sosvtv,
   .css-ccfpd4 {
     border-color: var(--nd-border) !important;
@@ -690,15 +766,22 @@
   /* --nd-border-strong (#444444) -- borders */
   .css-1dfz4rt,
   .css-ckmdy3,
+  .css-1imb8r4,
   .css-65aq1k,
-  .css-1imb8r4 {
+  .css-14vvmtd .MuiDataGrid-cell,
+  .css-18epln1,
+  .css-1dackf2 .MuiDataGrid-cell,
+  .css-9gxncs,
+  .css-xnd7ut,
+  .css-z9odut {
     border-color: var(--nd-border-strong) !important;
   }
 
   /* --nd-hover (#3e3e3e) -- borders */
   .css-1o8fs62,
   .css-dtnxfe,
-  .css-262pmu .tooltip::after {
+  .css-262pmu .tooltip::after,
+  .css-y1dkmo {
     border-color: var(--nd-hover) !important;
   }
 
